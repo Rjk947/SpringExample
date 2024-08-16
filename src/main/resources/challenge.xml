@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="userDataProvider" class="com.example.challenge.IoC.UserDatabase" />
+    <bean id="oracleDatabaseProvider" class="com.example.challenge.IoC.OracleDatabaseProvider" />
+    <bean id="sqlDataProvider" class="com.example.challenge.IoC.MySqlDatabaseProvider" />
+
+    <bean id="userManagerWithUserDataProvider" class="com.example.challenge.IoC.UserManager">
+       <constructor-arg ref="userDataProvider"/>
+    </bean>
+
+    <bean id="userManagerWithOracleDatabaseProvider" class="com.example.challenge.IoC.UserManager">
+        <constructor-arg ref="oracleDatabaseProvider"/>
+    </bean>
+
+    <bean id="userManagerWithUserSqlDataProvider" class="com.example.challenge.IoC.UserManager">
+        <constructor-arg ref="sqlDataProvider"/>
+    </bean>
+
+</beans>
